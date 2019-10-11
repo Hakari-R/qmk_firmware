@@ -30,6 +30,7 @@
 //_____Utility funcs___________________________________________________________
 
 static void init_pins(void) {
+#ifndef GOLBATV2
   // init all cols high - IC1 all input
   pca9555_set_config(IC1, PCA9555_PORT1, ALL_INPUT);//same as initial state
   pca9555_set_config(IC2, PCA9555_PORT0, ALL_INPUT);//same as initial state
@@ -37,6 +38,12 @@ static void init_pins(void) {
   // init all rows - IC1 port0 input
   pca9555_set_config(IC1, PCA9555_PORT0, ALL_OUTPUT);//same as initial state
   pca9555_set_output(IC1, PCA9555_PORT0, ALL_HIGH);
+#else
+  pca9555_set_config(IC2, PCA9555_PORT0, ALL_INPUT);
+  pca9555_set_config(IC1, PCA9555_PORT1, 8b11110000);
+  pca9555_set_output(IC1, PCA9555_PORT0, 8b00001111);
+
+#endif
 }
 
 static void select_row(uint8_t row) {
@@ -50,6 +57,7 @@ static void select_row(uint8_t row) {
 }
 
 static uint16_t read_cols(void) {
+#ifndef GOLBATV2
   uint16_t state_1 = pca9555_readPins(IC1, PCA9555_PORT1);
   uint16_t state_2 = pca9555_readPins(IC2, PCA9555_PORT0);
 
@@ -57,6 +65,12 @@ static uint16_t read_cols(void) {
   // while this technically gives 16 column reads,
   // the 16th column can never be set so is safely ignored
   return ~((state_2 << 8) | state_1);
+#else
+  uint16_t state_1 = pca9555_readPins(IC1, PCA9555_PORT0);
+  uint16_t state_2 = pca9555_readPins(IC1, PCA9555_PORT1);
+
+  return ~((state_2 << 4) | state_1 >> 4);
+#endif
 }
 
 static bool read_cols_on_row(matrix_row_t current_matrix[], uint8_t current_row) {
