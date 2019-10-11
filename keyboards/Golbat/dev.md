@@ -1,21 +1,21 @@
-# XD84
+# GolBat
 
 Development docs covering the following:
 - Kimera core
 - RGB
-- Backlight
-- Light Through Cat
+- Backlight (Maybe Future)
+- Light Through Cat (Maybe Future)
 
 ## Kimera core
 ![Kimera core](https://gd2.alicdn.com/imgextra/i4/159916802/TB2qsIgdrJkpuFjy1zcXXa5FFXa_!!159916802.jpg)
 
 What little available info that was available for the qmk port
 - atmega32u4 16Mhz
-  - board seems to have a 6Mhz crystal 
+  - board seems to have a 6Mhz crystal
 - 2x PCA9555 I2C IO expander
 
 Links:
-- [Schematic, BOM, Gerbers](/kairyu/kimera/blob/master/kimera_core)
+- [Schematic, BOM, Gerbers](https://github.com/kairyu/kimera/blob/master/kimera_core)
 - [Original firmware](https://github.com/kairyu/tmk_keyboard_custom/tree/master/keyboard/kimera)
 
 ```c
@@ -58,8 +58,8 @@ Kimera_core_v1.0 Components
          |      P16 |-- P15             |      P16 |-- P31
          |      P17 |-- P16             |      P17 |-- P32
          `----------'                   `----------'
-*/
 
+*/
 ```
 
 ### Bootloader
@@ -67,20 +67,27 @@ Default bootloader is `atmel-dfu`.
 Reboot to bootloader via magnetic switch next to icsp header.
 Flash using regular dfu methods.
 
-### XD84 pin mappings
+### Golbat pin mappings
 Taken from [kimera-config.json](https://github.com/kairyu/tkg/blob/master/keyboard/config/kimera-config.json)
 
-	"row_mapping": [ 1, 2, 3, 4, 5, 6 ],
-	"col_mapping": [ 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ],
+!! - - The V2 mapping was not support. - - !!
 
-# RGB
+      "name": "Golbat v1",
+      "row_mapping": [ 1, 2, 3, 4 ],
+      "col_mapping": [ 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
+
+      "name": "Golbat v2",
+      "row_mapping": [ 1, 2, 3, 4 ],
+      "col_mapping": [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
+
+# RGB (Not Test)
 - PIN C7
 - Number of RGB LED 7
 
-# Backlight
+# Backlight (Not Test)
 - PIN B6
 
-# Light Through Cat
+# Light Through Cat (Not Test)
     TODO - PWM C6
 
 ## Assumptions
@@ -90,7 +97,7 @@ Taken from [kimera-config.json](https://github.com/kairyu/tkg/blob/master/keyboa
 - Pins mapped sequentially
 - Each port only does row or column not a mixture of both
   - No need to have complex port config
-  - 
+  -
 
 | ROW index | Kimera Pin | PCA9555           |
 | ----------|------------|-------------------|
@@ -99,28 +106,23 @@ Taken from [kimera-config.json](https://github.com/kairyu/tkg/blob/master/keyboa
 | 2         | 3          | IC1 Port 0  pin 2 |
 | 3         | 4          | IC1 Port 0  pin 3 |
 | 4         | 5          | IC1 Port 0  pin 4 |
-| 5         | 6          | IC1 Port 0  pin 5 |
 
 - Safe enough to assume `row_index == pin`
 
-
 | COL index | Kimera Pin | PCA9555           |
 | ----------|------------|-------------------|
-| 0         | 17         | IC2 Port 0  pin 0 |
-| 1         | 18         | IC2 Port 0  pin 1 |
-| 2         | 19         | IC2 Port 0  pin 2 |
-| 3         | 20         | IC2 Port 0  pin 3 |
-| 4         | 21         | IC2 Port 0  pin 4 |
-| 5         | 22         | IC2 Port 0  pin 5 |
-| 6         | 23         | IC2 Port 0  pin 6 |
-| 7         | 24         | IC2 Port 0  pin 7 |
-| 8         | 25         | IC2 Port 1  pin 0 |
-| 9         | 26         | IC2 Port 1  pin 1 |
-| 10        | 27         | IC2 Port 1  pin 2 |
-| 11        | 28         | IC2 Port 1  pin 3 |
-| 12        | 29         | IC2 Port 1  pin 4 |
-| 13        | 30         | IC2 Port 1  pin 5 |
-| 14        | 31         | IC2 Port 1  pin 6 |
+| 0         | 9          | IC1 Port 1  pin 0 |
+| 1         | 10         | IC1 Port 1  pin 1 |
+| 2         | 11         | IC1 Port 1  pin 2 |
+| 3         | 12         | IC1 Port 1  pin 3 |
+| 4         | 13         | IC1 Port 1  pin 4 |
+| 5         | 14         | IC1 Port 1  pin 5 |
+| 6         | 15         | IC1 Port 1  pin 6 |
+| 7         | 16         | IC1 Port 1  pin 7 |
+| 8         | 17         | IC2 Port 0  pin 0 |
+| 9         | 18         | IC2 Port 0  pin 1 |
+| 10        | 19         | IC2 Port 0  pin 2 |
+| 11        | 20         | IC2 Port 0  pin 3 |
 
 - Safe enough to assume here col_index does not need to be converted to pin
 - Reading both ports one after the other gives us the same sequential behavior

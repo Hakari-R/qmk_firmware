@@ -35,17 +35,18 @@ static void init_pins(void) {
   pca9555_set_config(IC2, PCA9555_PORT0, ALL_INPUT);//same as initial state
 
   // init all rows - IC1 port0 input
-  pca9555_set_config(IC1, PCA9555_PORT0, ALL_INPUT);//same as initial state
+  pca9555_set_config(IC1, PCA9555_PORT0, ALL_OUTPUT);//same as initial state
+  pca9555_set_output(IC1, PCA9555_PORT0, ALL_HIGH);
 }
 
 static void select_row(uint8_t row) {
-  // For the XD84 all rows are on the same IC and port
+  // For the GolbatV1 all rows are on the same IC or port
   // so its safe enough to assume here row == pin
   uint8_t pin = row;
   uint8_t mask = 1 << pin;
 
   pca9555_set_output(IC1, PCA9555_PORT0, ALL_HIGH & (~mask));
-  pca9555_set_config(IC1, PCA9555_PORT0, ALL_INPUT & (~mask));
+  // pca9555_set_config(IC1, PCA9555_PORT0, ALL_INPUT & (~mask));
 }
 
 static uint16_t read_cols(void) {
