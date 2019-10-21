@@ -16,17 +16,17 @@
 #include "Golbat.h"
 
 void keyboard_pre_init_kb(void) {
-  setPinOutput(B6);
-
+  setPinOutput(C7);
+  writePinHigh(C7);
   keyboard_pre_init_user();
 }
 
-void led_set_kb(uint8_t usb_led) {
-  if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
-    writePinLow(B6);
-  } else {
-    writePinHigh(B6);
-  }
+// void led_set_kb(uint8_t usb_led) {
+//   if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
+//     writePinLow(B6);
+//   } else {
+//     writePinHigh(B6);
+//   }
 
-  led_set_user(usb_led);
-}
+//   led_set_user(usb_led);
+// }
