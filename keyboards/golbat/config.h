@@ -20,7 +20,7 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x408F
+#define PRODUCT_ID      0xFCB8
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    hakari
 #define PRODUCT         Golbat
@@ -74,6 +74,9 @@
 //   #define RGBLIGHT_EFFECT_ALTERNATING
 // #endif
 
+#define TAPPING_TERM 175
+#define PERMISSIVE_HOLD
+
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
@@ -83,9 +86,9 @@
 /* number of backlight levels */
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
+// #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+// #define LOCKING_RESYNC_ENABLE
 
 /* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
  * This is userful for the Windows task manager shortcut (ctrl+shift+esc).

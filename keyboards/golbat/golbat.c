@@ -16,8 +16,8 @@
 #include "Golbat.h"
 
 void keyboard_pre_init_kb(void) {
-  setPinOutput(C7);
-  writePinHigh(C7);
+  // setPinOutput(C7);
+  // writePinHigh(C7);
   keyboard_pre_init_user();
 }
 
