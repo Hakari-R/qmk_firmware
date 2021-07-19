@@ -22,7 +22,7 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
-NKRO_ENABLE = no            # USB Nkey Rollover
+NKRO_ENABLE = yes            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 MIDI_ENABLE = no            # MIDI support
@@ -32,10 +32,10 @@ FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 UNICODE_ENABLE = no         # Unicode
 
 # custom matrix setup
-CUSTOM_MATRIX = lite
+# CUSTOM_MATRIX = lite
 
-VPATH += drivers/gpio
-SRC += custom_matrix_helper.c pca9555.c matrix.c
-QUANTUM_LIB_SRC += i2c_master.c
+# VPATH += drivers/gpio
+# SRC += custom_matrix_helper.c pca9555.c matrix.c
+# QUANTUM_LIB_SRC += i2c_master.c
 
 LAYOUTS = default

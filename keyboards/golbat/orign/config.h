@@ -19,12 +19,12 @@
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xFEED
+#define VENDOR_ID       0xFEEE
 #define PRODUCT_ID      0xFCB8
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    hakari
 #define PRODUCT         Golbat
-#define DESCRIPTION     Golbat_V1
+#define DESCRIPTION     Golbat_ORG
 
 /* key matrix size */
 #define MATRIX_ROWS 4
@@ -40,20 +40,20 @@
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
 */
-//#define MATRIX_ROW_PINS { D0, D5 }
-//#define MATRIX_COL_PINS { F1, F0, B0 }
-//#define UNUSED_PINS
+#define MATRIX_ROW_PINS { B5, B6, C6, C7 }
+#define MATRIX_COL_PINS { F5, F4, F1, F0, D7, D6, D4, D5, D0, D1, D2, D3 }
+#define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
-//#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION COL2ROW
 
-#define BACKLIGHT_PIN B5
-#define BACKLIGHT_LEVELS 10
+// #define BACKLIGHT_PIN B5
+// #define BACKLIGHT_LEVELS 10
 // #define BACKLIGHT_BREATHING
 
-#define RGB_DI_PIN C7
-#define RGBLED_NUM 7
-#define RGBLIGHT_ANIMATIONS
+// #define RGB_DI_PIN C7
+// #define RGBLED_NUM 7
+// #define RGBLIGHT_ANIMATIONS
 // #ifdef RGB_DI_PIN
 //   #define RGBLIGHT_HUE_STEP 8
 //   #define RGBLIGHT_SAT_STEP 8
@@ -73,9 +73,11 @@
 //   #define RGBLIGHT_EFFECT_RGB_TEST
 //   #define RGBLIGHT_EFFECT_ALTERNATING
 // #endif
+#define LED_CAPS_LOCK_PIN B4
+#define LED_PIN_ON_STATE 0
 
-#define TAPPING_TERM 175
-#define PERMISSIVE_HOLD
+// #define TAPPING_TERM 175
+// #define PERMISSIVE_HOLD
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
