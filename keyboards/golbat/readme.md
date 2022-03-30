@@ -1,7 +1,8 @@
 # Golbat
 
 The First Kimera Core Based 40% Keyboard with Dual Spacebar.
-![XD84](https://gsnapshot.alicdn.com/imgextra/i3/TB1nuaPIFXXXXXQXFXXXXXXXXXX_!!0-item_pic.jpg_430x430.jpg?time=1457011168000)
+
+![golat](https://gsnapshot.alicdn.com/imgextra/i3/TB1nuaPIFXXXXXQXFXXXXXXXXXX_!!0-item_pic.jpg_430x430.jpg?time=1457011168000)
 
 Just support the BETA Board yet.(RED PCB)
 
