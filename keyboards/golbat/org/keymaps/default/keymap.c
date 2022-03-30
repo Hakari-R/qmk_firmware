@@ -9,20 +9,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[3] = LAYOUT_default(LGUI(KC_TAB),KC_NO,KC_NO,KC_NO,LCTL(KC_R),LCTL(KC_T),LCTL(KC_Y),KC_NO,KC_PGUP,KC_NO,KC_INS,KC_DEL,LALT(KC_TAB),LCTL(KC_A),LCTL(KC_S),LCTL(KC_D),LCTL(KC_F),KC_NO,KC_NO,KC_HOME,KC_PGDN,KC_END,KC_TRNS,C_S_T(KC_NO),LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V),KC_NO,KC_NO,KC_NO,KC_NO,C_S_T(KC_NO),RESET,KC_LALT,KC_LGUI,LCA_T(KC_NO),RCTL(KC_SPC),RCTL(KC_SPC),KC_RALT,KC_RGUI,KC_RCTL)
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        // case SFT_T(KC_SPC):
-        //     return TAPPING_TERM + 1250;
-        case LT(1,KC_SPC):
-            return 130;
-        case LT(2,KC_SPC):
-            return 130;
-        default:
-            return TAPPING_TERM;
-    }
-}
-
-
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
             // Immediately select the hold action when another key is pressed.
