@@ -86,6 +86,7 @@ XXX, K20, K21, K22, K23, K24, XXX,      XXX, K25, K26, K27, K28, K29, XXX,\
 #define MIRYOKU_CLIPBOARD_WIN
 #define SPLIT_WPM_ENABLE
 #define SPLIT_OLED_ENABLE
+#define SPLIT_LAYER_STATE_ENABLE
 
 
 /* disable debug print */

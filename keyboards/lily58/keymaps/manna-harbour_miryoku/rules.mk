@@ -23,5 +23,4 @@ SRC +=  \
         # ./lib/host_led_state_reader.c \
         # ./lib/timelogger.c \
 
-
-MIRYOKU_TAP=QWERTY
+MIRYOKU_EXTRA = QWERTY

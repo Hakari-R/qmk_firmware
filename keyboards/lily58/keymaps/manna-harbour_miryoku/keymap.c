@@ -7,21 +7,17 @@
 #include <stdio.h>
 #include "lily58.h"
 
-// enum layer_number {
-//   _QWERTY = 0,
-//   _LOWER,
-//   _RAISE,
-//   _ADJUST,
-// };
 enum layers { BASE, BUTTON, MEDIA, NAV, MOUSE, SYM, NUM, FUN };
 #define BASE   0
-#define BUTTON (1 << 1)
-#define MEDIA  (1 << 2)
-#define NAV    (1 << 3)
-#define MOUSE  (1 << 4)
-#define SYM    (1 << 5)
-#define NUM    (1 << 6)
-#define FUN    (1 << 7)
+#define EXTRA  (1 << 1)
+#define TAP    (1 << 2)
+#define BUTTON (1 << 3)
+#define NAV    (1 << 4)
+#define MOUSE  (1 << 5)
+#define MEDIA  (1 << 6)
+#define NUM    (1 << 7)
+#define SYM    (1 << 8)
+#define FUN    (1 << 9)
 
 char layer_state_str[24];
 
@@ -31,6 +27,14 @@ const char *read_layer_state(void) {
   case BASE:
     // snprintf(layer_state_str, sizeof(layer_state_str), "Layer: BASE");
     oled_write_P(PSTR("Layer\nBASE"), false);
+    break;
+  case EXTRA:
+    // snprintf(layer_state_str, sizeof(layer_state_str), "Layer: BASE");
+    oled_write_P(PSTR("Layer\nEX"), false);
+    break;
+  case TAP:
+    // snprintf(layer_state_str, sizeof(layer_state_str), "Layer: BASE");
+    oled_write_P(PSTR("Layer\nTAP"), false);
     break;
   case BUTTON:
     // snprintf(layer_state_str, sizeof(layer_state_str), "Layer: BUTTON");
@@ -77,7 +81,7 @@ const char *read_layer_state(void) {
 #ifdef OLED_ENABLE
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-  if (!is_keyboard_master())
+  if (!is_keyboard_left())
     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
   else
     return OLED_ROTATION_270;  // flips the display 180 degrees if offhand
@@ -201,25 +205,10 @@ static void render_anim(void) {
         anim_timer = timer_read();
         animation_phase(get_current_wpm());
     }
-    // if(wpm != 0) {
-    //     if(timer_elapsed(anim_timer) > ANIM_FRAME_DURATION) {
-    //         anim_timer = timer_read();
-    //         animation_phase(wpm);
-    //     }
-    //     anim_sleep = timer_read();
-    // } else {
-    //     if(timer_elapsed(anim_timer) > ANIM_FRAME_DURATION) {
-    //         anim_timer = timer_read();
-    //         animation_phase(wpm);
-    //     }
-    //     if(timer_elapsed(anim_sleep) > SLEEP_TIMER) {
-    //       //  oled_off();
-    //     }
-    // }
 }
 
 bool oled_task_user(void) {
-  if (is_keyboard_master()) {
+  if (is_keyboard_left()) {
     // If you want to change the display of OLED, you need to change here
     oled_write_ln(read_layer_state(), false);
     // oled_write_ln(read_keylog(), false);
