@@ -91,3 +91,15 @@ MIRYOKU_X(FUN_ALT,    "Fun")
 #define MIRYOKU_LAYER_NUM_ALT    MIRYOKU_LAYER_NUM     ALTMAP_KCNO
 #define MIRYOKU_LAYER_SYM_ALT    MIRYOKU_LAYER_SYM     ALTMAP_KCNO
 #define MIRYOKU_LAYER_FUN_ALT    MIRYOKU_LAYER_FUN     ALTMAP_KCNO
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+            // Immediately select the hold action when another key is pressed.
+        case KC_LCTL: case KC_RCTL:
+        case KC_LALT: case KC_RALT:
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
