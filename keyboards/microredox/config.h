@@ -1,0 +1,47 @@
+#pragma once
+
+#include "config_common.h"
+
+// #define EE_HANDS
+#define MASTER_LEFT
+// #define MASTER_RIGHT
+// #define SPLIT_HAND_PIN GP0
+// #define    SPLIT_HAND_PIN_LOW_IS_LEFT
+
+
+/* Set 0 if debouncing isn't needed */
+#define DEBOUNCE 5
+
+
+
+/* key matrix size */
+#define MATRIX_ROWS 8
+#define MATRIX_ROWS_PER_SIDE (MATRIX_ROWS / 2)
+#define MATRIX_COLS 5
+
+#define MATRIX_ROW_PINS { GP21,GP26,GP27,GP7 }
+#define MATRIX_COL_PINS { GP29, GP28,GP6,GP9,GP8 }
+#define MATRIX_ROW_PINS_RIGHT { GP8,GP9,GP7,GP21 }
+#define MATRIX_COL_PINS_RIGHT { GP28,GP26,GP27,GP6,GP5 }
+
+
+/* COL2ROW, ROW2COL*/
+#define DIODE_DIRECTION COL2ROW
+
+/* Double tap the side button to enter bootloader */
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
+
+#define VENDOR_ID 0x1A2B
+#define PRODUCT_ID 0x3C4D
+#define DEVICE_VER 0x0001
+
+#undef SERIAL_USART_FULL_DUPLEX
+#undef SERIAL_USART_RX_PIN
+#define SELECT_SOFT_SERIAL_SPEED 5
+// #define SOFT_SERIAL_PIN GP1
+// #define SERIAL_USART_TX_PIN GP1
+#define SPLIT_LAYER_STATE_ENABLE
+#define SERIAL_PIO_USE_PIO0
+#define USB_VBUS_PIN GP19

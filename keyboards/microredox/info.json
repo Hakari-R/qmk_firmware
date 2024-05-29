@@ -1,0 +1,11 @@
+{
+  "processor": "RP2040",
+  "bootloader": "rp2040",
+  "split" : {
+    "enabled": true,
+    // "main": "left",
+    "soft_serial_pin": "GP1",
+    "transport":{ "protocol":"serial"},
+    "usb_detect":{"timeout" : 2500}
+  }
+}
